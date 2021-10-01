@@ -1,0 +1,145 @@
+---
+openapi: 3.0.3
+info:
+  title: Payments for the demo. Hello Test testdfdfgcgx gbxf bxbc
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: "{{url}}"
+paths:
+  "/payments/{accountNumber}/limitssfgdfgdsfg":
+    get:
+      tags:
+        - Limits
+      summary: Current
+      description: Current
+      operationId: current
+      responses:
+        "200":
+          description: ""
+    put:
+      tags:
+        - Limits
+      summary: Update
+      description: Update
+      operationId: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                daily:
+                  type: number
+                  example: 30000
+            example:
+              daily: 30000
+      responses:
+        "200":
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+              examples:
+                200 OK:
+                  value:
+                    status: success
+    parameters:
+      - name: accountNumber
+        in: path
+        required: false
+        schema:
+          type: string
+  "/payments/{accountNumber}/payees":
+    get:
+      tags:
+        - Payees
+      summary: List
+      description: List
+      operationId: list
+      responses:
+        "200":
+          description: ""
+    parameters:
+      - name: accountNumber
+        in: path
+        required: true
+        schema:
+          type: string
+  "/payments/{accountNumber}/payees/add":
+    post:
+      tags:
+        - Payees
+      summary: Add
+      description: Add
+      operationId: add
+      requestBody:
+        content:
+          text/plain:
+            example: "{\n    \"name\": \"{{$randomFullName}}\",\n    \"checking\": {{$randomBankAccount}},\n    \"routing\": {{$randomBankAccount}}\n}"
+      responses:
+        "200":
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payeeId:
+                    type: string
+                    example: "{{$randomUUID}}"
+              examples:
+                200 OK:
+                  value:
+                    payeeId: "{{$randomUUID}}"
+    parameters:
+      - name: accountNumber
+        in: path
+        required: true
+        schema:
+          type: string
+  "/payments/{accountNumber}/transfer":
+    post:
+      summary: Transfer
+      description: Transfer
+      operationId: transfer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: string
+                  example: "{{$randomPrice}}"
+                date:
+                  type: string
+                  example: "{{$randomDateRecent}}"
+                payeeId:
+                  type: string
+                  example: "{{$randomUUID}}"
+                reference:
+                  type: string
+                  example: "{{$randomLoremSentence}}"
+            example:
+              amount: "{{$randomPrice}}"
+              date: "{{$randomDateRecent}}"
+              payeeId: "{{$randomUUID}}"
+              reference: "{{$randomLoremSentence}}"
+      responses:
+        "200":
+          description: ""
+    parameters:
+      - name: accountNumber
+        in: path
+        required: true
+        schema:
+          type: string
+tags:
+  - name: Payees
+  - name: Limits

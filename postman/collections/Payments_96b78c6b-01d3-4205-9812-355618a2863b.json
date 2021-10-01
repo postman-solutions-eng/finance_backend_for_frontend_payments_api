@@ -1,0 +1,368 @@
+{
+    "info": {
+        "_postman_id": "0b2ccda6-1817-4ff8-91be-28c2712714ab",
+        "name": "Payments",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "AuthFlow",
+            "item": [],
+            "id": "95a5b732-c5c0-4f13-aae9-deea42d4a395"
+        },
+        {
+            "name": "Payees",
+            "item": [
+                {
+                    "name": "List",
+                    "id": "46727b05-a9b5-493e-9c43-9f1a37a1c3e2",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{url}}/payments/{{accountNumber}}/payees",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "payments",
+                                "{{accountNumber}}",
+                                "payees"
+                            ]
+                        },
+                        "description": "List"
+                    },
+                    "response": [
+                        {
+                            "id": "a25c740d-bfdb-4ce6-b86f-66b7fddcf4e7",
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{url}}/payments/{{accountNumber}}/payees",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "payments",
+                                        "{{accountNumber}}",
+                                        "payees"
+                                    ]
+                                }
+                            },
+                            "_postman_previewlanguage": "Text",
+                            "header": [],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "[\n    {\n        \"name\": \"{{$randomFullName}}\",\n        \"checking\": {{$randomBankAccount}},\n        \"routing\": {{$randomBankAccount}}\n    },\n    {\n        \"name\": \"{{$randomFullName}}\",\n        \"checking\": {{$randomBankAccount}},\n        \"routing\": {{$randomBankAccount}}\n    },\n    {\n        \"name\": \"{{$randomFullName}}\",\n        \"checking\": {{$randomBankAccount}},\n        \"routing\": {{$randomBankAccount}}\n    },\n    {\n        \"name\": \"{{$randomFullName}}\",\n        \"checking\": {{$randomBankAccount}},\n        \"routing\": {{$randomBankAccount}}\n    },\n    {\n        \"name\": \"{{$randomFullName}}\",\n        \"checking\": {{$randomBankAccount}},\n        \"routing\": {{$randomBankAccount}}\n    },\n    {\n        \"name\": \"{{$randomFullName}}\",\n        \"checking\": {{$randomBankAccount}},\n        \"routing\": {{$randomBankAccount}}\n    },\n    {\n        \"name\": \"{{$randomFullName}}\",\n        \"checking\": {{$randomBankAccount}},\n        \"routing\": {{$randomBankAccount}}\n    },\n    {\n        \"name\": \"{{$randomFullName}}\",\n        \"checking\": {{$randomBankAccount}},\n        \"routing\": {{$randomBankAccount}}\n    },\n    {\n        \"name\": \"{{$randomFullName}}\",\n        \"checking\": {{$randomBankAccount}},\n        \"routing\": {{$randomBankAccount}}\n    },\n    {\n        \"name\": \"{{$randomFullName}}\",\n        \"checking\": {{$randomBankAccount}},\n        \"routing\": {{$randomBankAccount}}\n    }\n]"
+                        }
+                    ]
+                },
+                {
+                    "name": "Add",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "602f3d5d-bdc0-45f8-8668-6b72e95952e2",
+                                "type": "text/javascript",
+                                "exec": [
+                                    "const res = pm.response.json()",
+                                    "",
+                                    "pm.globals.set(\"payeeId\", res.payeeId);"
+                                ]
+                            }
+                        }
+                    ],
+                    "id": "c4abcc5a-05c6-4720-b50e-873e174c09b4",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/plain"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{url}}/payments/{{accountNumber}}/payees/add",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "payments",
+                                "{{accountNumber}}",
+                                "payees",
+                                "add"
+                            ]
+                        },
+                        "description": "Add"
+                    },
+                    "response": [
+                        {
+                            "id": "b75bcfee-a0d9-47a8-946f-f898bf26380a",
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"name\": \"{{$randomFullName}}\",\n    \"checking\": {{$randomBankAccount}},\n    \"routing\": {{$randomBankAccount}}\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/payments/{{accountNumber}}/payees/add",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "payments",
+                                        "{{accountNumber}}",
+                                        "payees",
+                                        "add"
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "Text",
+                            "header": [
+                                {
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n    \"payeeId\": \"{{$randomUUID}}\"\n}"
+                        }
+                    ]
+                }
+            ],
+            "id": "6d34e998-10d7-4fc3-8246-5ad5976bf809"
+        },
+        {
+            "name": "Limits",
+            "item": [],
+            "id": "ece0198b-07a4-420b-b1f1-4871baef3f48"
+        },
+        {
+            "name": "Transfer",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "id": "bf989e1c-c6c9-41ef-8c5f-14f66374dd33",
+                        "type": "text/javascript",
+                        "exec": [
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "",
+                            "",
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            ""
+                        ]
+                    }
+                }
+            ],
+            "id": "1f6fc056-8ed0-49ee-afcb-84b3248dd70d",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{url}}/payments/{{accountNumber}}/transfer",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "payments",
+                        "{{accountNumber}}",
+                        "transfer"
+                    ]
+                },
+                "description": "Transfer"
+            },
+            "response": [
+                {
+                    "id": "b13646e5-0b2d-48cf-9aec-ed08fd9f005a",
+                    "name": "200 OK",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"payeeId\": \"{{$randomUUID}}\",\n    \"amount\": \"{{$randomPrice}}\",\n    \"reference\": \"{{$randomLoremSentence}}\",\n    \"date\": \"{{$randomDateRecent}}\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/payments/{{accountNumber}}/transfer",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "payments",
+                                "{{accountNumber}}",
+                                "transfer"
+                            ]
+                        }
+                    },
+                    "_postman_previewlanguage": "Text",
+                    "header": [],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n    \"transaction\": \"complete\"\n}"
+                }
+            ]
+        },
+        {
+            "name": "Current",
+            "id": "e9a26257-b4fb-4f0e-b0d9-155bc1faf1ec",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/payments/:accountNumber/limitssfgdfgdsfg",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "payments",
+                        ":accountNumber",
+                        "limitssfgdfgdsfg"
+                    ],
+                    "variable": [
+                        {
+                            "key": "accountNumber",
+                            "value": "commodo"
+                        }
+                    ]
+                },
+                "description": "Current"
+            },
+            "response": []
+        },
+        {
+            "name": "Update",
+            "id": "4269b208-c601-47ad-84ab-bbe8cf64f862",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"daily\": -74535192.95495611\n}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/payments/:accountNumber/limitssfgdfgdsfg",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "payments",
+                        ":accountNumber",
+                        "limitssfgdfgdsfg"
+                    ],
+                    "variable": [
+                        {
+                            "key": "accountNumber",
+                            "value": "commodo"
+                        }
+                    ]
+                },
+                "description": "Update"
+            },
+            "response": [
+                {
+                    "id": "d1c51524-107b-42c9-8533-cf4f6fa9bb64",
+                    "name": "200 OK",
+                    "originalRequest": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"daily\": 30000\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/payments/:accountNumber/limitssfgdfgdsfg",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "payments",
+                                ":accountNumber",
+                                "limitssfgdfgdsfg"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "accountNumber"
+                                }
+                            ]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "Text",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n \"status\": \"success\"\n}"
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "id": "9534d9f8-baca-4758-9d0b-4a844cef0321",
+            "key": "baseUrl",
+            "value": "{{url}}",
+            "type": "string"
+        }
+    ]
+}
